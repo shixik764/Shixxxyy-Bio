@@ -50,7 +50,7 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            padding: 0;
+            padding: 0 var(--container-padding);
         }
         
         /* Новогодняя гирлянда */
@@ -219,7 +219,7 @@
         .header-content {
             max-width: 100%;
             margin: 0 auto;
-            padding: 0px;
+            padding: 0;
         }
         
         h1 {
@@ -235,10 +235,45 @@
             font-style: italic;
         }
         
+        /* Кнопка поддержки разработчика */
+        .support-btn-container {
+            position: absolute;
+            top: 20px;
+            left: var(--container-padding);
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .support-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background:  var(--bg-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            white-space: nowrap;
+        }
+        
+        .support-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .support-btn:active {
+            transform: translateY(0);
+        }
+        
         .header-controls {
             position: absolute;
             top: 20px;
-            right: 20px;
+            right: var(--container-padding);
             display: flex;
             gap: 10px;
         }
@@ -561,26 +596,14 @@
             text-align: center;
         }
         
-        //* Бронирование - теперь как обратная связь */
-.booking-section {
-    margin-top: 30px;
-    padding: 25px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    text-align: center;
-    background-color: var(--card-bg);
-}
-
-@media (max-width: 768px) {
-    .booking-section {
-        padding: 20px;
-    }
-}
-    
-    .booking-content {
-        padding: 0 15px;
-    }
-}
+        .booking-section {
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            background-color: var(--card-bg);
+        }
         
         .booking-link {
             display: inline-flex;
@@ -741,16 +764,39 @@
             
             h1 {
                 padding: 0;
+                margin-top: 20px;
+                margin-bottom: 5px;
             }
             
             .subtitle {
                 padding: 0;
+                margin-bottom: 15px;
+            }
+            
+            .header-content {
+                padding: 0;
+            }
+            
+            .support-btn-container {
+                position: static;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 15px;
+                margin-top: 10px;
+                left: 0;
+                right: 0;
+            }
+            
+            .support-btn {
+                padding: 8px 20px;
+                font-size: 13px;
             }
             
             .header-controls {
                 position: static;
                 justify-content: center;
                 margin-top: 10px;
+                right: 0;
             }
             
             .floating-nav {
@@ -758,24 +804,26 @@
             }
             
             .section {
-                padding: 20px 0;
+                padding: 25px 0;
             }
             
             h2 {
                 padding-left: 0;
                 padding-right: 0;
+                margin-bottom: 20px;
             }
             
             h3 {
                 margin-left: 0;
+                margin-bottom: 15px;
             }
             
             .book-card {
                 padding: 20px;
                 flex-direction: column;
-                text-align: center;
+                text-align: left;
                 gap: 15px;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .book-logo {
@@ -814,11 +862,29 @@
                 width: 100%;
                 right: -100%;
             }
+            
+            /* Меньше гирлянд для мобильной версии */
+            .holiday-lights .light:nth-child(n+11) {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
             .section {
-                padding: 15px 0;
+                padding: 20px 0;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .support-btn {
+                padding: 8px 15px;
+                font-size: 12px;
             }
             
             .book-logo {
@@ -831,6 +897,30 @@
             
             .album-img i {
                 font-size: 50px;
+            }
+            
+            /* Еще меньше гирлянд для маленьких экранов */
+            .holiday-lights .light:nth-child(n+8) {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .main-container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+            }
+            
+            .support-btn {
+                padding: 7px 12px;
+                font-size: 11px;
             }
         }
     </style>
@@ -897,6 +987,14 @@
     <div id="mainContent" style="display: none;">
         <header>
             <div class="main-container">
+                <!-- Кнопка поддержки разработчика -->
+                <div class="support-btn-container">
+                    <a href="https://www.donationalerts.com/r/shixxxy" class="support-btn" target="_blank" title="Поддержать разработчика сайта">
+                        <i class="fas fa-heart"></i>
+                        Поддержать
+                    </a>
+                </div>
+                
                 <div class="header-content">
                     <h1>Константин Кирюхин</h1>
                     <p class="subtitle">AKA Шикси — автор, музыкант, стример</p>
@@ -1052,7 +1150,6 @@
                     </div>
                 </div>
                 
-             
                 <!-- Обратная связь -->
                 <div class="main-container">
                     <div class="feedback-section">
@@ -1244,7 +1341,14 @@
                 function createHolidayLights() {
                     holidayLights.innerHTML = '';
                     const colors = ['#ff0000', '#00ff00', '#ffff00', '#ff00ff', '#00ffff'];
-                    const lightCount = 20;
+                    
+                    // Адаптивное количество гирлянд в зависимости от размера экрана
+                    let lightCount = 20;
+                    if (window.innerWidth <= 480) {
+                        lightCount = 8; // Меньше для мобильных
+                    } else if (window.innerWidth <= 768) {
+                        lightCount = 10; // Для планшетов
+                    }
                     
                     for (let i = 0; i < lightCount; i++) {
                         const light = document.createElement('div');
